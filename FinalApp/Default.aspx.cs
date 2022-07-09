@@ -11,7 +11,9 @@ namespace FinalApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Glob.authHos = 0;
+            Glob.authMed = 0;
+            Glob.authIns = 0;
         }
     }
 }
