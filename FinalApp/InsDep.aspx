@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InsDep.aspx.cs" Inherits="FinalApp.InsDep" MasterPageFile="~/Site.Master" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Welcome to our Medical Department site</h2>
+    <h2>Welcome to our Insurance Department site</h2>
     <div>
         <br />
         <table class="nav-justified">
