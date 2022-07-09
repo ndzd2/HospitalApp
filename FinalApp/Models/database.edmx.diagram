@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3de45df01ed94a858daaf929ebfece6e" Name="Diagram1">
+        <EntityTypeShape EntityType="CapstoneModel.bills" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CapstoneModel.hospital" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CapstoneModel.hospitalLogin" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CapstoneModel.insuranceLogin" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CapstoneModel.medicalLogin" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CapstoneModel.patient" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="CapstoneModel.FK__bills__patientId__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="CapstoneModel.FK__hospitalL__hospi__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="CapstoneModel.FK__medicalLo__hospi__300424B4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

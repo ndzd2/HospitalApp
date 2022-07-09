@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CapstoneModelStoreContainer" CdmEntityContainer="CapstoneEntities">
+    <EntitySetMapping Name="bills">
+      <EntityTypeMapping TypeName="CapstoneModel.bills">
+        <MappingFragment StoreEntitySet="bills">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="med" ColumnName="med" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="patientId" ColumnName="patientId" />
+          <ScalarProperty Name="used" ColumnName="used" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hospital">
+      <EntityTypeMapping TypeName="CapstoneModel.hospital">
+        <MappingFragment StoreEntitySet="hospital">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hospitalLogin">
+      <EntityTypeMapping TypeName="CapstoneModel.hospitalLogin">
+        <MappingFragment StoreEntitySet="hospitalLogin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="hospitalId" ColumnName="hospitalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="insuranceLogin">
+      <EntityTypeMapping TypeName="CapstoneModel.insuranceLogin">
+        <MappingFragment StoreEntitySet="insuranceLogin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medicalLogin">
+      <EntityTypeMapping TypeName="CapstoneModel.medicalLogin">
+        <MappingFragment StoreEntitySet="medicalLogin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="hospitalId" ColumnName="hospitalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="patient">
+      <EntityTypeMapping TypeName="CapstoneModel.patient">
+        <MappingFragment StoreEntitySet="patient">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="age" ColumnName="age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

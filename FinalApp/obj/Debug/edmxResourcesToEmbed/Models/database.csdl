@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CapstoneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bills">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="med" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="patientId" Type="Int32" />
+    <Property Name="used" Type="Int32" />
+    <NavigationProperty Name="patient" Relationship="Self.FK__bills__patientId__2C3393D0" FromRole="bills" ToRole="patient" />
+  </EntityType>
+  <EntityType Name="hospital">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="hospitalLogin" Relationship="Self.FK__hospitalL__hospi__2F10007B" FromRole="hospital" ToRole="hospitalLogin" />
+    <NavigationProperty Name="medicalLogin" Relationship="Self.FK__medicalLo__hospi__300424B4" FromRole="hospital" ToRole="medicalLogin" />
+  </EntityType>
+  <EntityType Name="hospitalLogin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hospitalId" Type="Int32" />
+    <NavigationProperty Name="hospital" Relationship="Self.FK__hospitalL__hospi__2F10007B" FromRole="hospitalLogin" ToRole="hospital" />
+  </EntityType>
+  <EntityType Name="insuranceLogin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="medicalLogin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hospitalId" Type="Int32" />
+    <NavigationProperty Name="hospital" Relationship="Self.FK__medicalLo__hospi__300424B4" FromRole="medicalLogin" ToRole="hospital" />
+  </EntityType>
+  <EntityType Name="patient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="age" Type="Int32" />
+    <NavigationProperty Name="bills" Relationship="Self.FK__bills__patientId__2C3393D0" FromRole="patient" ToRole="bills" />
+  </EntityType>
+  <Association Name="FK__bills__patientId__2C3393D0">
+    <End Role="patient" Type="Self.patient" Multiplicity="0..1" />
+    <End Role="bills" Type="Self.bills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bills">
+        <PropertyRef Name="patientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hospitalL__hospi__2F10007B">
+    <End Role="hospital" Type="Self.hospital" Multiplicity="0..1" />
+    <End Role="hospitalLogin" Type="Self.hospitalLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hospital">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="hospitalLogin">
+        <PropertyRef Name="hospitalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__medicalLo__hospi__300424B4">
+    <End Role="hospital" Type="Self.hospital" Multiplicity="0..1" />
+    <End Role="medicalLogin" Type="Self.medicalLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hospital">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="medicalLogin">
+        <PropertyRef Name="hospitalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CapstoneEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bills" EntityType="Self.bills" />
+    <EntitySet Name="hospital" EntityType="Self.hospital" />
+    <EntitySet Name="hospitalLogin" EntityType="Self.hospitalLogin" />
+    <EntitySet Name="insuranceLogin" EntityType="Self.insuranceLogin" />
+    <EntitySet Name="medicalLogin" EntityType="Self.medicalLogin" />
+    <EntitySet Name="patient" EntityType="Self.patient" />
+    <AssociationSet Name="FK__bills__patientId__2C3393D0" Association="Self.FK__bills__patientId__2C3393D0">
+      <End Role="patient" EntitySet="patient" />
+      <End Role="bills" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hospitalL__hospi__2F10007B" Association="Self.FK__hospitalL__hospi__2F10007B">
+      <End Role="hospital" EntitySet="hospital" />
+      <End Role="hospitalLogin" EntitySet="hospitalLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__medicalLo__hospi__300424B4" Association="Self.FK__medicalLo__hospi__300424B4">
+      <End Role="hospital" EntitySet="hospital" />
+      <End Role="medicalLogin" EntitySet="medicalLogin" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CapstoneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bills">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="med" Type="varchar" MaxLength="50" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="patientId" Type="int" />
+    <Property Name="used" Type="int" />
+  </EntityType>
+  <EntityType Name="hospital">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hospitalLogin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="hospitalId" Type="int" />
+  </EntityType>
+  <EntityType Name="insuranceLogin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="medicalLogin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="hospitalId" Type="int" />
+  </EntityType>
+  <EntityType Name="patient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="surname" Type="varchar" MaxLength="50" />
+    <Property Name="age" Type="int" />
+  </EntityType>
+  <Association Name="FK__bills__patientId__2C3393D0">
+    <End Role="patient" Type="Self.patient" Multiplicity="0..1" />
+    <End Role="bills" Type="Self.bills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bills">
+        <PropertyRef Name="patientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hospitalL__hospi__2F10007B">
+    <End Role="hospital" Type="Self.hospital" Multiplicity="0..1" />
+    <End Role="hospitalLogin" Type="Self.hospitalLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hospital">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="hospitalLogin">
+        <PropertyRef Name="hospitalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__medicalLo__hospi__300424B4">
+    <End Role="hospital" Type="Self.hospital" Multiplicity="0..1" />
+    <End Role="medicalLogin" Type="Self.medicalLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hospital">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="medicalLogin">
+        <PropertyRef Name="hospitalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CapstoneModelStoreContainer">
+    <EntitySet Name="bills" EntityType="Self.bills" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hospital" EntityType="Self.hospital" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hospitalLogin" EntityType="Self.hospitalLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="insuranceLogin" EntityType="Self.insuranceLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="medicalLogin" EntityType="Self.medicalLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="patient" EntityType="Self.patient" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__bills__patientId__2C3393D0" Association="Self.FK__bills__patientId__2C3393D0">
+      <End Role="patient" EntitySet="patient" />
+      <End Role="bills" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hospitalL__hospi__2F10007B" Association="Self.FK__hospitalL__hospi__2F10007B">
+      <End Role="hospital" EntitySet="hospital" />
+      <End Role="hospitalLogin" EntitySet="hospitalLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__medicalLo__hospi__300424B4" Association="Self.FK__medicalLo__hospi__300424B4">
+      <End Role="hospital" EntitySet="hospital" />
+      <End Role="medicalLogin" EntitySet="medicalLogin" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
