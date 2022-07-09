@@ -9,26 +9,29 @@
 
     <div class="row">
         <div class="col-md-4">
-            <h2>Hospital Department</h2>
+            <h2>&nbsp; Hospital Department</h2>
             <p>
                 &nbsp;</p>
             <p>
+                &nbsp;
                 <a class="btn btn-default" runat="server" href="~/HospDep"> >Login &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Medical Department</h2>
+            <h2>&nbsp; Medical Department</h2>
             <p>
                 &nbsp;</p>
             <p>
+                &nbsp;
                 <a class="btn btn-default" runat="server" href="~/MedDep"> >Login &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Insurance Department</h2>
+            <h2>&nbsp; Insurance Department</h2>
             <p>
                 &nbsp;</p>
             <p>
+                &nbsp;
                 <a class="btn btn-default" runat="server" href="~/InsDep"> >Login &raquo;</a>
             </p>
         </div>

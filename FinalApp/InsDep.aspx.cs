@@ -24,20 +24,34 @@ namespace FinalApp
             //if login and password are matching with these from database, he is going to be taken to hospital site
             DBcon.con.Open();
             reader = DBcon.cmd("SELECT * FROM insuranceLogin").ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                if (TextBox1.Text == reader.GetString(1))
-                    if (TextBox2.Text == reader.GetString(2))
+                while (reader.Read())
+                {
+                    try
                     {
-                        DBcon.con.Close();
-                        Glob.authIns = 1;
-                        Response.Redirect(siteName);
+                        if (TextBox1.Text == reader.GetString(1))
+                            if (TextBox2.Text == reader.GetString(2))
+                            {
+                                DBcon.con.Close();
+                                Glob.authIns = 1;
+                                Response.Redirect(siteName);
 
-                    }else
-                        DBcon.con.Close();
-                else
-                    DBcon.con.Close();
+                            }
+                            else
+                                DBcon.con.Close();
+                        else
+                            DBcon.con.Close();
+                    }
+                    catch (FormatException ex)
+                    {
+                        return;
+                    }
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                return;
             }
         }
     }

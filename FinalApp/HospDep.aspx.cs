@@ -27,21 +27,34 @@ namespace FinalApp
             //if login and password are matching with these from database, he is going to be taken to hospital site
             DBcon.con.Open();
             reader = DBcon.cmd("SELECT * FROM hospitalLogin INNER JOIN hospital ON hospitalLogin.hospitalId = hospital.id").ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                if (TextBox1.Text == reader.GetString(1) && Convert.ToInt32(TextBox3.Value) == reader.GetInt32(4))
+                while (reader.Read())
                 {
-                    if (TextBox2.Text == reader.GetString(2))
+                    try
                     {
-                        DBcon.con.Close();
-                        Glob.authHos = 1;
-                        Response.Redirect(siteName);
+                        if (TextBox1.Text == reader.GetString(1) && Convert.ToInt32(TextBox3.Value) == reader.GetInt32(4))
+                        {
+                            if (TextBox2.Text == reader.GetString(2))
+                            {
+                                DBcon.con.Close();
+                                Glob.authHos = 1;
+                                Response.Redirect(siteName);
+                            }
+                            else
+                                DBcon.con.Close();
+                        }
+                        else
+                            DBcon.con.Close();
                     }
-                    else
-                        DBcon.con.Close();
-                } else 
-                    DBcon.con.Close();
+                    catch (FormatException ex)
+                    {
+                        return;
+                    }
+                }
+            } catch(InvalidOperationException ex)
+            {
+                return;
             }
         }
     }

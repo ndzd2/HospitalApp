@@ -56,7 +56,7 @@
                 <td style="width: 241px">&nbsp;</td>
                 <td class="modal-sm" style="width: 104px">Password</td>
                 <td style="width: 203px">
-                    <asp:TextBox ID="TextBox2" runat="server" Width="194px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" Width="194px" TextMode="Password" ></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
