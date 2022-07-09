@@ -1,4 +1,4 @@
-This is documentation of my project.
+Welcome to my Capstone Project!
 
 If you want to run it on your PC please take PLIK.BACPAC and import it into your database.
 Open FinalApp.sln and go to DBcon.cs file, there you have to change data source into your's connection name.
